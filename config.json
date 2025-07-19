@@ -1,0 +1,25 @@
+{
+    "chess_com": {
+        "username": "your_username",
+        "password": "your_password"
+    },
+    "game_settings": {
+        "time_control": "10+0",
+        "engine_time_limit": 5.0,
+        "headless": false
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "chess_bot.log"
+    },
+    "selectors": {
+        "login_username": "[name=\"username\"]",
+        "login_password": "[name=\"password\"]",
+        "login_button": "[type=\"submit\"]",
+        "play_button": "[data-cy=\"play-button\"]",
+        "find_game": "[data-cy=\"find-game-button\"]",
+        "board": ".board",
+        "pieces": ".piece",
+        "game_over": ".game-over"
+    }
+}
