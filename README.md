@@ -1,123 +1,331 @@
-![Sunfish logo](https://raw.github.com/thomasahle/sunfish/master/docs/logo/sunfish_large.png)
+# 🏆 Advanced Chess.com Bot
 
-## Introduction
-Sunfish is a simple, but strong chess engine, written in Python. With its simple [UCI](http://wbec-ridderkerk.nl/html/UCIProtocol.html) interface, and removing comments and whitespace, it takes up just 131 lines of code! (`build/clean.sh sunfish.py | wc -l`).
-Yet [it plays at ratings above 2000 at Lichess](https://lichess.org/@/sunfish-engine).
+A comprehensive, feature-rich autonomous chess bot that plays on Chess.com using the powerful Sunfish chess engine. This bot includes advanced features like game analysis, performance monitoring, multi-bot management, and a web interface.
 
-Because Sunfish is small and strives to be simple, the code provides a great platform for experimenting. People have used it for testing parallel search algorithms, experimenting with evaluation functions, and developing deep learning chess programs. Fork it today and see what you can do!
+## ✨ Features
 
-# Play against sunfish!
+### 🎮 Core Gameplay
+- **Autonomous Play**: Fully automated chess gameplay on Chess.com
+- **Multiple Game Types**: Support for Rapid, Blitz, Bullet, and Daily games
+- **Computer Opponents**: Play against Chess.com's computer with configurable difficulty
+- **Online Play**: Play against real opponents automatically
+- **Smart Resignation**: Automatically resign when position is too bad
+- **Draw Offers**: Intelligent draw offer handling
 
-The simplest way to run sufish is through the "fancy" terminal interface:
-<pre>
-$ <b>tools/fancy.py -cmd ./sunfish.py</b>
-Playing against sunfish 2023.
-Do you want to be white or black? <b>black</b>
-  1 ♖ ♘ ♗ ♔ ♕ ♗ ♘ ♖
-  2 ♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
-  3
-  4
-  5
-  6
-  7 ♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
-  8 ♜ ♞ ♝ ♚ ♛ ♝ ♞ ♜
-    h g f e d c b a
+### 🧠 Advanced Engine Integration
+- **Sunfish Chess Engine**: Powerful, lightweight chess engine for move calculation
+- **Configurable Search Depth**: Adjustable search depth for different time controls
+- **Move Time Limits**: Configurable time limits for move calculation
+- **Position Evaluation**: Real-time position evaluation and analysis
 
-Score: 23, nodes: 11752, nps: 13812, time: 0.9
- My move: d4
-  1 ♖ ♘ ♗ ♔ ♕ ♗ ♘ ♖
-  2 ♙ ♙ ♙ ♙   ♙ ♙ ♙
-  3
-  4         ♙
-  5
-  6
-  7 ♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
-  8 ♜ ♞ ♝ ♚ ♛ ♝ ♞ ♜
-    h g f e d c b a
+### 🛡️ Safety & Fair Play
+- **Human-like Behavior**: Random delays and realistic move patterns
+- **Session Limits**: Configurable maximum games and session duration
+- **Consecutive Win/Loss Limits**: Automatic pausing to avoid detection
+- **Suspicious Pattern Avoidance**: Smart behavior to maintain fair play
+- **Cooldown Periods**: Automatic breaks between games
 
-Your move (e.g. c6 or g8h6): <b>Nf6</b>
-</pre>
+### 📊 Analysis & Monitoring
+- **Game Analysis**: Detailed analysis of every game played
+- **Performance Metrics**: Win rates, average game length, evaluation trends
+- **Critical Moment Detection**: Identify key turning points in games
+- **Opening Analysis**: Track and analyze opening performance
+- **Session Reports**: Comprehensive session statistics and reports
 
-### Notation
+### 🔧 Management & Control
+- **Multi-Bot Management**: Run multiple bot instances simultaneously
+- **Web Interface**: Beautiful web dashboard for bot monitoring and control
+- **Scheduling**: Schedule bot sessions for specific times
+- **Real-time Monitoring**: Live status updates and performance tracking
+- **Process Management**: Automatic restart and health monitoring
 
-The terminal interface uses algebraic notation for inputting moves. Here is a brief overview of how it works:
-From white's perspective, the columns are labeled a-h from left to right and the rows are labeled 1-8 from the bottom to the top.
-Each square is named with its respective letter than number (eg. a2, c3, h8).
-A move is communicated by the first letter of the moving piece followed by the destination square (the P for pawn moves is omitted and N is used for knights).
-If more than one of the same piece can move to a square, specify the file of the moving piece. If that is still ambiguous, specify the column.
+### 📈 Visualization & Reporting
+- **Performance Charts**: Visual charts showing win rates and trends
+- **Game Reports**: Detailed analysis reports for individual games
+- **Opening Reports**: Analysis of opening performance
+- **Session Reports**: Comprehensive session summaries
+- **Export Capabilities**: Export data in various formats
 
-In order to use the terminal interface, the notation used must be of a specific format, otherwise the entered move will not be read correctly.
-An "x" is sometimes used to denote a capture, but must be omitted (eg. Bd4 not Bxd4).
-Do not use a "+" to denote a check (eg. Bf7 not Bf7+).
-Do not use an "=" to denote pawn promotion (eg. e8Q not e8=Q)
-To denote a pawn capture the required notation is starting file followed by the ending square (eg. gf4 not gf).
-Castling must be denoted with lowercase 'o's (eg. o-o and o-o-o).
-Specifying a file or columm must be after stating the piece (eg. Rae1 not aRe1).
-When notating en passant, the destination square should be the square the pawn ends up on, not th quare of the pawn that was captured (eg. ef6 not ef5).
+## 🚀 Quick Start
 
-The terminal interface also supports explicit notation. This is where the source square is stated followed by the destination square (eg. e2e4).
+### 1. Setup
+```bash
+# Clone the repository
+git clone <repository-url>
+cd chess-bot
 
-Note this requires the [python-chess](https://github.com/niklasf/python-chess/) package.
-For a true minimalist experience, first we can "pack" sunfish into a compressed executable (less than 3KB!) and run it directly:
-<pre>
-$ <b>build/pack.sh sunfish.py packed.sh</b>
-Total length: 2953
-$ <b>./packed.sh</b>
-<b>go wtime 1000 btime 1000 winc 1000 binc 1000</b>
-info depth 1 score cp 0 pv d2d4
-bestmove d2d4
-</pre>
-(See the [UCI specification](http://wbec-ridderkerk.nl/html/UCIProtocol.html) for the full set of commands.)
+# Run the setup script
+python setup.py
+```
 
-### Playing with a graphical interface
+### 2. Configuration
+Edit the `.env` file with your Chess.com credentials:
+```bash
+CHESS_USERNAME=your_username
+CHESS_PASSWORD=your_password
+GAME_TYPE=rapid
+TIME_CONTROL=10+0
+DIFFICULTY=intermediate
+```
 
-It is also possible to run Sunfish with a graphical interface, such as [PyChess](http://pychess.org) or [Arena](http://www.playwitharena.de).
+### 3. Run the Bot
+```bash
+# Single bot
+./run_bot.sh
 
-Finally you can [play sunfish now on Lichess](https://lichess.org/@/sunfish-engine) or play against [Recursing's Rust port](https://github.com/Recursing/sunfish_rs),
-also [on Lichess](https://lichess.org/@/sunfish_rs), which is about 100 ELO stronger.
+# Or manually
+source venv/bin/activate
+python advanced_chess_bot.py --username YOUR_USERNAME --password YOUR_PASSWORD
+```
 
-### NNUE version
+## 📁 Project Structure
 
-There is an experimental version using an [Efficiently updatable neural network](https://en.wikipedia.org/wiki/Efficiently_updatable_neural_network). You can test it using the fancy terminal interface as above:
+```
+chess-bot/
+├── advanced_chess_bot.py      # Main bot implementation
+├── simple_chess_bot.py        # Simplified bot version
+├── bot_manager.py             # Multi-bot management system
+├── analysis_tools.py          # Game analysis and reporting tools
+├── config.py                  # Configuration management
+├── setup.py                   # Setup and installation script
+├── requirements.txt           # Python dependencies
+├── bot_configs.json          # Multi-bot configurations
+├── .env                      # Environment variables
+├── run_bot.sh               # Bot execution script
+├── run_manager.sh           # Manager execution script
+├── run_analysis.sh          # Analysis execution script
+└── README.md                # This file
+```
 
-<pre>$ <b>tools/fancy.py -cmd "./sunfish_nnue.py nnue/models/tanh.pickle"</b>
-...
-</pre>
+## ⚙️ Configuration
 
-In contrast to the large NNUE in say, Stockfish, this network is only 1207 bytes!
-That makes sure sunfish NNUE can still be packed into less than 4KB.
-Using NNUE, sunfish will play better positionally, but worse tactically, since the implementation is still not fast enough.
+### Environment Variables (.env)
+```bash
+# Chess.com credentials
+CHESS_USERNAME=your_username
+CHESS_PASSWORD=your_password
 
-# Features
+# Game settings
+GAME_TYPE=rapid              # rapid, blitz, bullet, daily, custom
+TIME_CONTROL=10+0            # Time control (e.g., 10+0, 3+2, 1+0)
+DIFFICULTY=intermediate      # beginner, intermediate, advanced, expert
 
-1. Built around the simple, but efficient MTD-bi search algorithm, also known as [C*](https://www.chessprogramming.org/NegaC*).
-2. Filled with classic "chess engine tricks" for simpler and faster code.
-3. Efficiently updatedable evaluation function through [Piece Square Tables](https://www.chessprogramming.org/Piece-Square_Tables).
-4. Uses standard Python collections and data structures for clarity and efficiency.
+# Session limits
+MAX_GAMES_PER_SESSION=5
+SESSION_DURATION_LIMIT=3600
 
-# Limitations
+# Browser settings
+BROWSER_HEADLESS=false
+DISABLE_IMAGES=true
+INCOGNITO=true
 
-Sunfish supports all chess rules, except the 50 moves draw rule.
+# Safety settings
+HUMAN_LIKE_BEHAVIOR=true
+```
 
-There are many ways in which you may try to make Sunfish stronger. First you could change from a board representation to a mutable array and add a fast way to enumerate pieces. Then you could implement dedicated capture generation, check detection and check evasions. You could also move everything to bitboards, implement parts of the code in C or experiment with parallel search!
+### Bot Configuration (bot_configs.json)
+```json
+[
+  {
+    "id": "rapid_bot",
+    "username": "your_rapid_username",
+    "password": "your_rapid_password",
+    "game_type": "rapid",
+    "time_control": "10+0",
+    "difficulty": "intermediate",
+    "max_games": 5,
+    "session_duration": 1800,
+    "description": "Rapid games bot"
+  }
+]
+```
 
-The other way to make Sunfish stronger is to give it more knowledge of chess. The current evaluation function only uses piece square tables - it doesn't even distinguish between midgame and endgame. You can also experiment with more pruning - currently only null move is done - and extensions - currently none are used. Finally Sunfish might benefit from a more advanced move ordering, MVV/LVA and SEE perhaps?
+## 🎯 Usage Examples
 
-An easy way to get a strong Sunfish is to run with with the [PyPy Just-In-Time intepreter](https://pypy.org/). In particular the python2.7 version of pypy gives a 250 ELO boost compared to the cpython (2 or 3) intepreters at fast time controls:
+### Single Bot
+```bash
+# Basic usage
+python advanced_chess_bot.py --username user --password pass
 
-    Rank Name                    Elo     +/-   Games   Score   Draws
-       1 pypy2.7 (7.1)           166      38     300   72.2%   19.7%
-       2 pypy3.6 (7.1)            47      35     300   56.7%   21.3%
-       3 python3.7               -97      36     300   36.3%   20.7%
-       4 python2.7              -109      35     300   34.8%   24.3%
+# With custom settings
+python advanced_chess_bot.py \
+  --username user \
+  --password pass \
+  --game-type blitz \
+  --time-control 3+0 \
+  --difficulty advanced \
+  --max-games 10 \
+  --headless
+```
 
+### Bot Manager (Multiple Bots)
+```bash
+# Start bot manager with web interface
+python bot_manager.py --config bot_configs.json --web-port 8080
 
-# Why Sunfish?
+# Headless mode
+python bot_manager.py --config bot_configs.json --no-web
+```
 
-The name Sunfish actually refers to the [Pygmy Sunfish](http://en.wikipedia.org/wiki/Pygmy_sunfish), which is among the very few fish to start with the letters 'Py'. The use of a fish is in the spirit of great engines such as Stockfish, Zappa and Rybka.
+### Analysis Tools
+```bash
+# Analyze single game
+python analysis_tools.py --mode game --input analysis_game_123.json --output game_report.txt
 
-In terms of Heritage, Sunfish borrows much more from [Micro-Max by Geert Muller](http://home.hccnet.nl/h.g.muller/max-src2.html) and [PyChess](http://pychess.org).
+# Analyze performance across sessions
+python analysis_tools.py --mode performance --input . --output performance_report.txt --charts
 
-# License
+# Analyze openings
+python analysis_tools.py --mode openings --input . --output opening_report.txt
+```
 
-[GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+## 🌐 Web Interface
+
+The bot manager includes a web interface accessible at `http://localhost:8080`:
+
+- **Real-time Status**: View all bot instances and their current status
+- **Start/Stop Control**: Control individual bots with one click
+- **Performance Metrics**: View win rates, games played, and session statistics
+- **Live Monitoring**: Real-time updates of bot performance
+
+## 📊 Analysis Features
+
+### Game Analysis
+- **Move-by-move evaluation**: Track position evaluation throughout the game
+- **Critical moments**: Identify key turning points and blunders
+- **Phase analysis**: Separate analysis for opening, middlegame, and endgame
+- **Performance metrics**: Average evaluation, volatility, and trends
+
+### Performance Analysis
+- **Win rate tracking**: Monitor performance over time
+- **Session statistics**: Games per session, duration, and efficiency
+- **Trend analysis**: Identify improving or declining performance
+- **Visual charts**: Graphical representation of performance data
+
+### Opening Analysis
+- **Opening frequency**: Track most played openings
+- **Opening performance**: Win rates and evaluation for each opening
+- **Opening recommendations**: Identify best performing openings
+
+## 🛡️ Safety Features
+
+### Fair Play
+- **Human-like delays**: Random move timing to mimic human behavior
+- **Session limits**: Automatic stopping after maximum games or time
+- **Consecutive win/loss limits**: Pause after too many wins or losses
+- **Pattern avoidance**: Avoid suspicious playing patterns
+
+### Resource Management
+- **Memory monitoring**: Track and limit memory usage
+- **CPU monitoring**: Monitor CPU usage and performance
+- **Process management**: Automatic restart on failures
+- **Cleanup**: Proper resource cleanup and logging
+
+## 🔧 Advanced Configuration
+
+### Engine Settings
+```python
+# In config.py
+engine = EngineSettings(
+    engine_type=EngineType.SUNFISH,
+    search_depth=5,
+    move_time_limit=2.0,
+    nodes_limit=1000000,
+    skill_level=20
+)
+```
+
+### Browser Settings
+```python
+browser = BrowserSettings(
+    headless=False,
+    window_size=(1920, 1080),
+    disable_images=True,
+    incognito=True,
+    disable_extensions=True
+)
+```
+
+### Safety Settings
+```python
+safety = SafetySettings(
+    max_games_per_session=10,
+    session_duration_limit=3600,
+    cooldown_between_games=30,
+    human_like_behavior=True,
+    max_consecutive_wins=5,
+    max_consecutive_losses=3
+)
+```
+
+## 📈 Performance Monitoring
+
+### Real-time Metrics
+- **Response times**: Track move calculation and execution times
+- **Memory usage**: Monitor memory consumption
+- **Error rates**: Track and log errors and failures
+- **Success rates**: Monitor successful moves and games
+
+### Logging
+- **Comprehensive logging**: Detailed logs for debugging and analysis
+- **Performance logs**: Track performance metrics over time
+- **Error logging**: Detailed error reporting and analysis
+- **Game logs**: Complete game history and analysis
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+1. **Login Failed**
+   - Check credentials in `.env` file
+   - Ensure Chess.com account is active
+   - Try disabling 2FA temporarily
+
+2. **Browser Issues**
+   - Update Chrome to latest version
+   - Check Chrome driver compatibility
+   - Try running in headless mode
+
+3. **Move Detection Issues**
+   - Check CSS selectors in config
+   - Ensure stable internet connection
+   - Try different time controls
+
+4. **Performance Issues**
+   - Reduce search depth
+   - Increase move time limits
+   - Check system resources
+
+### Debug Mode
+```bash
+# Enable debug logging
+export LOG_LEVEL=DEBUG
+python advanced_chess_bot.py --username user --password pass
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is for educational purposes. Please respect Chess.com's terms of service and use responsibly.
+
+## ⚠️ Disclaimer
+
+This bot is for educational and research purposes only. Users are responsible for complying with Chess.com's terms of service. The authors are not responsible for any consequences of using this software.
+
+## 🆘 Support
+
+For issues and questions:
+1. Check the troubleshooting section
+2. Review the logs for error messages
+3. Open an issue on GitHub with detailed information
+
+---
+
+**Happy Chess Playing! 🎮♟️**

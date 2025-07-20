@@ -1,0 +1,46 @@
+[
+  {
+    "id": "rapid_bot",
+    "username": "your_rapid_username",
+    "password": "your_rapid_password",
+    "game_type": "rapid",
+    "time_control": "10+0",
+    "difficulty": "intermediate",
+    "max_games": 5,
+    "session_duration": 1800,
+    "description": "Rapid games bot"
+  },
+  {
+    "id": "blitz_bot",
+    "username": "your_blitz_username",
+    "password": "your_blitz_password",
+    "game_type": "blitz",
+    "time_control": "3+0",
+    "difficulty": "advanced",
+    "max_games": 10,
+    "session_duration": 3600,
+    "description": "Blitz games bot"
+  },
+  {
+    "id": "bullet_bot",
+    "username": "your_bullet_username",
+    "password": "your_bullet_password",
+    "game_type": "bullet",
+    "time_control": "1+0",
+    "difficulty": "expert",
+    "max_games": 15,
+    "session_duration": 2700,
+    "description": "Bullet games bot"
+  },
+  {
+    "id": "computer_bot",
+    "username": "your_computer_username",
+    "password": "your_computer_password",
+    "game_type": "custom",
+    "time_control": "15+10",
+    "difficulty": "beginner",
+    "max_games": 3,
+    "session_duration": 1200,
+    "description": "Computer games bot for practice"
+  }
+]

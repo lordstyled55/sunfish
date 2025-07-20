@@ -5,3 +5,7 @@ selenium==4.34.2
 webdriver-manager==4.0.2
 requests==2.32.4
 python-dotenv==1.1.1
+flask==3.0.0
+matplotlib==3.8.2
+numpy==1.26.2
+psutil==5.9.6
