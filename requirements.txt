@@ -1,2 +1,7 @@
-chess==1.9.4
-tqdm==4.57.0
+chess==1.11.2
+tqdm==4.67.1
+pillow==11.3.0
+selenium==4.34.2
+webdriver-manager==4.0.2
+requests==2.32.4
+python-dotenv==1.1.1
